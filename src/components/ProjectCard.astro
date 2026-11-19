@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { href } from '../lib/paths';
+interface Props { project: CollectionEntry<'work'>; featured?: boolean; heading?: 'h2' | 'h3'; }
+const { project, featured = false, heading: Heading = 'h3' } = Astro.props;
+const p = project.data;
+---
+<article class:list={['project-card', { 'project-feature': featured }]}>
+  <div class="project-image">
+    <img src={href(p.image)} alt={p.imageAlt} width={p.imageWidth} height={p.imageHeight} loading="lazy" decoding="async" />
+  </div>
+  <div class="project-copy">
+    <p class="eyebrow">{p.discipline}</p>
+    <Heading><a href={href(`work/${project.id}/`)}>{p.title}</a></Heading>
+    <p>{p.summary}</p>
+    <span class="project-link" aria-hidden="true">Read case study</span>
+  </div>
+</article>
+

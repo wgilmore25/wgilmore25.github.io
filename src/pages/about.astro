@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+import { href } from '../lib/paths';
+---
+<BaseLayout title="About">
+  <section class="shell page-intro about-intro">
+    <div><p class="eyebrow">About</p><h1>A coaching foundation.<br /><em>A broader perspective.</em></h1></div>
+    <img class="about-portrait" src={href('images/portrait.webp')} width="198" height="203" alt="Will Gilmore" />
+  </section>
+  <section class="shell about-body section-bottom">
+    <div class="about-narrative prose">
+      <h2>Working across the whole system.</h2>
+      <p>My background spans professional baseball, athlete performance at Red Bull, and the development of analytical tools and decision frameworks.</p>
+      <p>At the Cincinnati Reds, my responsibilities included leading 10 coaches across six teams, coordinating budgets and logistics, and establishing shared department standards. In rehabilitation, I worked with physical therapists to develop organization-wide return-to-play protocols.</p>
+      <p>At the Red Bull Athlete Performance Center, I worked with health and performance staff on individual athlete programs, sport science assessments, dashboards, and reports.</p>
+      <p>My recent project work explores how to interpret performance data, make recommendations explicit, and evaluate the quality of AI-generated exercise programs.</p>
+      <a class="button secondary" href={href('downloads/will-gilmore-resume.docx')} download>Download résumé · DOCX</a>
+    </div>
+    <aside class="education"><p class="eyebrow">Education & credentials</p>
+      <h3>Australian Catholic University</h3><p>Master’s of High Performance Sport<br />2020</p>
+      <h3>Santa Clara University</h3><p>BA, Communication · 2011<br />NCAA Division I Baseball</p>
+      <h3>NSCA</h3><p>Certified Strength and Conditioning Specialist<br />Registered Strength and Conditioning Coach with Distinction<br />Certified Performance and Sport Scientist</p>
+    </aside>
+  </section>
+  <section class="shell section timeline-section">
+    <div class="section-heading"><div><p class="eyebrow">Experience</p><h2>Where the work developed.</h2></div></div>
+    <ol class="timeline">{profile.experience.map(item => <li><p class="timeline-date">{item.dates}</p><div><h3>{item.organization}</h3><p class="timeline-role">{item.role}</p><p>{item.description}</p></div></li>)}</ol>
+  </section>
+</BaseLayout>
+

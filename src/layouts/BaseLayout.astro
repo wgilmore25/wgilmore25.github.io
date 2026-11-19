@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/instrument-sans';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/600.css';
+import '../styles/global.css';
+import { profile } from '../data/profile';
+import { href } from '../lib/paths';
+
+interface Props { title?: string; description?: string; }
+const { title, description = profile.description } = Astro.props;
+const pageTitle = title ? `${title} · Will Gilmore` : 'Will Gilmore · Human Performance, Data & AI';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const links = [
+  { label: 'About', path: 'about/' },
+  { label: 'Selected Work', path: 'work/' },
+  { label: 'Writing', path: 'writing/' },
+  { label: 'Contact', path: 'contact/' },
+];
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f6f2" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={href('favicon.png')} type="image/png" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href={href()} aria-label="Will Gilmore home">Will Gilmore<span class="brand-dot" aria-hidden="true">.</span></a>
+        <nav aria-label="Main navigation">
+          {links.map(link => (
+            <a href={href(link.path)} aria-current={currentPath.startsWith(href(link.path)) ? 'page' : undefined}>{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <a class="brand" href={href()}>Will Gilmore<span class="brand-dot" aria-hidden="true">.</span></a>
+        <p>Human performance · Data · AI</p>
+        <a href={`mailto:${profile.email}`}>Get in touch</a>
+      </div>
+    </footer>
+  </body>
+</html>
+

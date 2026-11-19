@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { href } from '../lib/paths';
+interface Props { article: CollectionEntry<'writing'>; heading?: 'h2' | 'h3'; }
+const { article, heading: Heading = 'h3' } = Astro.props;
+const a = article.data;
+---
+<article class="writing-preview">
+  <a class="writing-image" href={a.url} aria-label={`Read ${a.title}`}>
+    <img src={href(a.image)} alt={a.imageAlt} width="627" height="386" loading="lazy" />
+  </a>
+  <div>
+    <p class="eyebrow">{a.publication} · <time datetime={a.date.toISOString().slice(0,10)}>{a.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time></p>
+    <Heading><a href={a.url}>{a.title}</a></Heading>
+    <p>{a.description}</p>
+    <a class="text-link" href={a.url}>Read on {a.publication}</a>
+  </div>
+</article>
+

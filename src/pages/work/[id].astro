@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { href } from '../../lib/paths';
+export async function getStaticPaths() {
+  return (await getCollection('work')).map(project => ({ params: { id: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const p = project.data;
+const { Content } = await render(project);
+---
+<BaseLayout title={p.title} description={p.summary}>
+  <article>
+    <header class="shell page-intro case-intro">
+      <a class="back-link" href={href('work/')}>All selected work</a>
+      <p class="eyebrow">{p.discipline}</p><h1>{p.title}</h1><p class="intro-description">{p.summary}</p>
+      <dl class="case-meta"><div><dt>Context</dt><dd>{p.context}</dd></div><div><dt>Period</dt><dd>{p.period}</dd></div></dl>
+    </header>
+    <div class="shell case-layout">
+      <nav class="case-nav" aria-label="On this page"><p class="eyebrow">In this case</p><a href="#problem">The problem</a><a href="#role">My role</a><a href="#methods">Methods</a><a href="#outcomes">Decisions & outcomes</a><a href="#limitations">Limitations</a></nav>
+      <div class="case-body">
+        <figure class="evidence-figure"><a href={href(p.image)} aria-label="Open supporting artifact at full size"><img src={href(p.image)} alt={p.imageAlt} width={p.imageWidth} height={p.imageHeight} /></a><figcaption>{p.caption} <a href={href(p.image)}>View full size</a></figcaption></figure>
+        <section id="problem" class="case-section prose"><h2>The problem</h2><p>{p.problem}</p></section>
+        <section id="role" class="case-section prose"><h2>My role</h2><p>{p.role}</p></section>
+        <section id="methods" class="case-section prose"><h2>Methods</h2><ul>{p.methods.map(method => <li>{method}</li>)}</ul></section>
+        <section id="outcomes" class="case-section prose"><h2>Decisions & outcomes</h2><ul>{p.outcomes.map(outcome => <li>{outcome}</li>)}</ul><Content /></section>
+        {p.gallery.map(item => <figure class="evidence-figure"><a href={href(item.image)} aria-label="Open additional artifact at full size"><img src={href(item.image)} alt={item.alt} width={item.width} height={item.height} loading="lazy" /></a><figcaption>{item.caption} <a href={href(item.image)}>View full size</a></figcaption></figure>)}
+        <section id="limitations" class="case-section limitations prose"><p class="eyebrow">Scope of the evidence</p><h2>Limitations</h2><ul>{p.limitations.map(limitation => <li>{limitation}</li>)}</ul></section>
+        <section class="source-note"><h2>Source material</h2><ul>{p.sources.map(source => <li>{source}</li>)}</ul></section>
+      </div>
+    </div>
+    <div class="shell case-end"><a class="button secondary" href={href('work/')}>Explore more work</a><a class="text-link" href={href('contact/')}>Discuss this project</a></div>
+  </article>
+</BaseLayout>
+

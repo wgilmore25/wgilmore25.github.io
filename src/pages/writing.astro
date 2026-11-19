@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WritingPreview from '../components/WritingPreview.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('writing')).sort((a,b) => +b.data.date - +a.data.date);
+---
+<BaseLayout title="Writing">
+  <section class="shell page-intro"><p class="eyebrow">Writing</p><h1>Physiology, data,<br /><em>and practical interpretation.</em></h1><p class="intro-description">Selected writing on how performance and wearable data inform the decisions we make about training.</p></section>
+  <section class="shell section-bottom" aria-label="Published writing">{articles.map(article => <WritingPreview article={article} heading="h2" />)}</section>
+</BaseLayout>
+

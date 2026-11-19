@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+const projects = (await getCollection('work')).sort((a,b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Selected Work">
+  <section class="shell page-intro"><p class="eyebrow">Selected work</p><h1>Problems, methods,<br /><em>and the decisions that follow.</em></h1><p class="intro-description">Case studies in physiological monitoring, AI evaluation, and organizational standards. Each describes my contribution, the evidence, and its limitations.</p></section>
+  <section class="shell section-bottom" aria-label="Project case studies"><div class="project-grid work-grid">{projects.map(project => <ProjectCard project={project} heading="h2" />)}</div></section>
+</BaseLayout>
+
