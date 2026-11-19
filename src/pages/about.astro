@@ -25,7 +25,24 @@ import { href } from '../lib/paths';
   </section>
   <section class="shell section timeline-section">
     <div class="section-heading"><div><p class="eyebrow">Experience</p><h2>Where the work developed.</h2></div></div>
-    <ol class="timeline">{profile.experience.map(item => <li><p class="timeline-date">{item.dates}</p><div><h3>{item.organization}</h3><p class="timeline-role">{item.role}</p><p>{item.description}</p></div></li>)}</ol>
+    <ol class="timeline">{profile.experience.map(item => <li>
+      <p class="timeline-date">{item.dates}</p>
+      <div>
+        <h3>{item.organization}</h3>
+        <p class="timeline-role">{item.role}</p>
+        <p>{item.description}</p>
+        {item.organization === 'Kansas City Royals' && (
+          <figure class="career-photo">
+            <img src={href('images/royals-field.webp')} width="1000" height="994" alt="Will Gilmore at the ballpark in Kansas City Royals training apparel, carrying a foam roller." loading="lazy" decoding="async" />
+            <figcaption>On the field with the Kansas City Royals.</figcaption>
+          </figure>
+        )}
+      </div>
+    </li>)}</ol>
   </section>
 </BaseLayout>
 
+<style>
+  .career-photo { width: 100%; max-width: 26rem; margin-top: 1.5rem; }
+  .career-photo img { width: 100%; height: auto; border-radius: 4px; }
+</style>
