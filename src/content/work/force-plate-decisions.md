@@ -43,11 +43,11 @@
       "height": 1149
     },
     {
-      "image": "images/cmj-decision-tree.webp",
+      "image": "images/cmj-tree-hd.webp",
       "alt": "Decision tree connecting a jump-height change to limiter diagnosis and archetype strategy before suggesting a training focus.",
       "caption": "Supplied decision architecture linking assessment characteristics to suggested training priorities.",
-      "width": 679,
-      "height": 372
+      "width": 1774,
+      "height": 887
     }
   ]
 }

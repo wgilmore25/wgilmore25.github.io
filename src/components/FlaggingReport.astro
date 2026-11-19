@@ -1,0 +1,40 @@
+---
+interface Props { image: string }
+const { image } = Astro.props;
+const rows = [
+  ['A','2025-12-23',0,3,'39.11','240.7','0.67','baseline'],
+  ['B','2025-12-20',3,4,'46.89','257','0.65','stable'],
+  ['C','2025-12-20',3,4,'▼ 43.87','▼ 275','▼ 0.59','monitor'],
+  ['D','2025-12-20',3,4,'▼ 57.96','▼ 220.4','▼ 0.71','monitor'],
+  ['E','2025-12-20',3,5,'49.12','297','0.52','stable'],
+  ['F','2025-12-20',3,4,'▼ 42.86','▼ 272.5','▼ 0.66','flag'],
+  ['G','2025-12-20',3,4,'▼ 54.21','▼ 226.7','▼ 0.59','monitor'],
+  ['H','2025-11-30',23,9,'▼ 55.02','▼ 297.1','▼ 0.43','monitor'],
+];
+---
+<figure>
+  <h2>CMJ Flagging Report</h2>
+  <dl>
+    <dt class="stable">Stable</dt><dd>Within SWC and within noise</dd>
+    <dt class="monitor">Monitor</dt><dd>Possible meaningful change (≥ 1 TE)</dd>
+    <dt class="flag">Flag</dt><dd>Likely meaningful change (≥ 2 TE)</dd>
+    <dt>Insufficient data</dt><dd>Fewer than 4 tests in the baseline window</dd>
+  </dl>
+  <div class="scroll" tabindex="0" role="region" aria-label="Athlete results">
+    <table><thead><tr>{['Name','Date','Days since last jump','Tests in window','Jump height (cm)','Concentric impulse (N·s)','RSI-mod'].map(label => <th scope="col">{label}</th>)}</tr></thead>
+    <tbody>{rows.map(([name,date,days,tests,height,impulse,rsi,status]) => <tr><th scope="row">Athlete {name}</th><td>{date}</td><td>{days}</td><td>{tests}</td>{[height,impulse,rsi].map(value => <td class={String(status)}>{value}</td>)}</tr>)}</tbody></table>
+  </div>
+  <figcaption><a href={image}>View original report screenshot</a></figcaption>
+</figure>
+<style>
+figure { padding:clamp(1rem,3vw,2rem); background:white; border:1px solid var(--line); }
+dl { display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;margin:1.25rem 0 2rem; }
+dt, th { font-weight:600; }
+dd { margin:0; }
+.scroll { overflow-x:auto; }
+table { border-collapse:collapse;width:100%;min-width:39rem;font-size:1rem;font-variant-numeric:tabular-nums;line-height:1.35; }
+td, th { padding:.6rem .35rem;border-bottom:1px solid var(--line);text-align:left; }
+td:nth-child(2),tbody th { white-space:nowrap; }
+.stable { color:#13663e; } .monitor { color:#87530b; } .flag { color:#a32828; }
+:global(.case-body:has(.scroll)), :global(.case-body:has(figure table)) { min-width:0; }
+</style>
