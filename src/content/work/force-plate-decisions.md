@@ -7,10 +7,10 @@
   "period": "2021–2026",
   "order": 2,
   "featured": true,
-  "image": "images/cmj-report.webp",
+  "image": "images/cmj-report-clean.webp",
   "imageAlt": "CMJ report with stable, monitor, flag, and insufficient-data explanations and anonymized athlete rows.",
-  "imageWidth": 693,
-  "imageHeight": 454,
+  "imageWidth": 818,
+  "imageHeight": 614,
   "caption": "The supplied 2025 report distinguishes stable results, possible change, likely meaningful change, and insufficient baseline data.",
   "problem": "Simple assessment flags could confuse ordinary variability with meaningful change. Translating assessments into individualized training priorities also required practitioner time.",
   "role": "I evolved the reporting approach using baselines and variability thresholds and designed an archetype-based system connecting CMJ characteristics with suggested training priorities.",
@@ -36,11 +36,11 @@
   ],
   "gallery": [
     {
-      "image": "images/cmj-application.webp",
-      "alt": "CMJ monitoring application showing aggregate counts, baseline settings, and an athlete summary table with names redacted in the source.",
-      "caption": "Working application screenshot supplied in the portfolio. The displayed counts describe this screenshot.",
-      "width": 847,
-      "height": 418
+      "image": "images/cmj-application-clean.webp",
+      "alt": "CMJ monitoring application showing aggregate counts, baseline settings, and an athlete summary table.",
+      "caption": "Working CMJ monitoring application. The displayed counts describe this screenshot.",
+      "width": 2048,
+      "height": 1149
     },
     {
       "image": "images/cmj-decision-tree.webp",
@@ -52,5 +52,4 @@
   ]
 }
 ---
-
 
