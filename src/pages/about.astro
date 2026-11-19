@@ -6,7 +6,10 @@ import { href } from '../lib/paths';
 <BaseLayout title="About">
   <section class="shell page-intro about-intro">
     <div><p class="eyebrow">About</p><h1>A coaching foundation.<br /><em>A broader perspective.</em></h1></div>
-    <img class="about-portrait" src={href('images/portrait.webp')} width="198" height="203" alt="Will Gilmore" />
+    <figure class="about-coaching">
+      <img src={href('images/apc-coaching-1400.webp')} srcset={`${href('images/apc-coaching-700.webp')} 700w, ${href('images/apc-coaching-1400.webp')} 1400w`} sizes="(max-width: 640px) calc(100vw - 2.5rem), (max-width: 900px) min(40rem, calc(100vw - 3rem)), 34rem" width="1400" height="1180" alt="Will Gilmore coaching an athlete during a medicine-ball exercise at the Red Bull Athlete Performance Center." fetchpriority="high" decoding="async" />
+      <figcaption>Coaching at the Red Bull Athlete Performance Center.</figcaption>
+    </figure>
   </section>
   <section class="shell about-body section-bottom">
     <div class="about-narrative prose">
@@ -43,6 +46,14 @@ import { href } from '../lib/paths';
 </BaseLayout>
 
 <style>
+  .about-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3.5rem; align-items: center; }
+  .about-intro h1 { font-size: clamp(2.4rem, 4.4vw, 4rem); }
+  .about-coaching { min-width: 0; }
+  .about-coaching img { width: 100%; height: auto; border-radius: 4px; }
+  @media (max-width: 900px) {
+    .about-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .about-coaching { max-width: 40rem; }
+  }
   .career-photo { width: 100%; max-width: 26rem; margin-top: 1.5rem; }
   .career-photo img { width: 100%; height: auto; border-radius: 4px; }
 </style>
