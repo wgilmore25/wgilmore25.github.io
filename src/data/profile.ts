@@ -12,7 +12,7 @@ export const profile = {
     },
     {
       organization: 'Cincinnati Reds',
-      role: 'Strength & Conditioning Coordinator / Assistant Director',
+      role: 'Minor League Strength and Conditioning Coordinator',
       dates: 'December 2020 – May 2022',
       description: 'Managed 10 coaches across six teams. Established department standards and staff development plans, and oversaw budgets, logistics, and training camps.',
     },
