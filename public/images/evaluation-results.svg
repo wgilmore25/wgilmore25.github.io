@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Results</title><desc id="desc">Five model outputs scored from 34 to 36 out of 36, with zero safety overrides.</desc>
+<rect width="1200" height="675" rx="28" fill="#fff" stroke="#e2e5e9" stroke-width="2"/>
+<g font-family="Arial, sans-serif" fill="#111827"><text x="54" y="78" font-size="34" font-weight="700" fill="#0863d9">RESULTS</text>
+<rect x="45" y="130" width="775" height="410" rx="18" fill="#f7f8fa" stroke="#e0e3e8"/><path d="M45 148 Q45 130 63 130 H802 Q820 130 820 148 V205 H45Z" fill="#e9ebef"/>
+<text x="75" y="177" font-size="26" font-weight="700">Model (Condition)</text><text x="630" y="177" font-size="26">Score (/ 36)</text>
+<g stroke="#dfe3e8"><path d="M45 273H820 M45 340H820 M45 407H820 M45 474H820"/></g>
+<g font-size="27"><text x="75" y="250"><tspan font-weight="700">Model B</tspan> (Gemini, low reasoning)</text><text x="75" y="317"><tspan font-weight="700">Model F</tspan> (GPT-6, no prefs)</text><text x="75" y="384"><tspan font-weight="700">Model A</tspan> (blinded output)</text><text x="75" y="451"><tspan font-weight="700">Model C</tspan> (blinded output)</text><text x="75" y="518"><tspan font-weight="700">Model D</tspan> (Claude, no prefs)</text></g>
+<g font-size="30" font-weight="700" text-anchor="middle"><text x="715" y="250">36</text><text x="715" y="317">35</text><text x="715" y="384">35</text><text x="715" y="451">35</text><text x="715" y="518">34</text></g>
+<path d="M855 135V540 M900 270H1155 M900 405H1155" stroke="#dfe3e8" stroke-width="2"/><g text-anchor="middle"><g fill="#0863d9" font-size="48" font-weight="700"><text x="1028" y="205">5</text><text x="1028" y="335">34–36 / 36</text><text x="1028" y="475">0</text></g><g font-size="26"><text x="1028" y="245">model outputs</text><text x="1028" y="375">score range</text><text x="1028" y="515">safety overrides</text></g></g></g></svg>
