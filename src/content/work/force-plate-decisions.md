@@ -39,8 +39,8 @@
       "image": "images/cmj-application-clean.webp",
       "alt": "CMJ monitoring application showing aggregate counts, baseline settings, and an athlete summary table.",
       "caption": "Working CMJ monitoring application. The displayed counts describe this screenshot.",
-      "width": 2048,
-      "height": 1149
+      "width": 1932,
+      "height": 962
     },
     {
       "image": "images/cmj-tree-hd.webp",
